@@ -1,6 +1,12 @@
 Content\Maps\Level1.xnb
-Content\TileSheets\TileSheet01.xnb
 Content\Maps\Map01.xnb
+Content\Models\Box.xnb
+Content\Models\Spoon.xnb
+Content\SourceImages\Box_Cross.xnb
+Content\SourceImages\Spoon_Color.xnb
+Content\TileSheets\TileSheet01.xnb
 Content\TileSheets\Background01.xnb
 Content\TileSheets\Background02.xnb
 Content\TileSheets\Background03.xnb
+Content\sourceimages\Box_Cross_0.xnb
+Content\sourceimages\Spoon_Color_0.xnb

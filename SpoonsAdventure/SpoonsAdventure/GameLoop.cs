@@ -23,6 +23,7 @@ namespace SpoonsAdventure
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         GameManager _gm;
+        Renderer _rend;
 
         Map map;
         IDisplayDevice mapDisplayDevice;
@@ -42,14 +43,18 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
+            // 3D Renderer
+            _rend = new Renderer(_graphics);
+            _gm   = new GameManager();
+            map   = new Map();
+
             // This method calls LoadContents
             base.Initialize();
 
-            _gm = new GameManager();
+            // Map
             mapDisplayDevice = new XnaDisplayDevice(this.Content, this.GraphicsDevice);
             map.LoadTileSheets(mapDisplayDevice);
             viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
-            
         }
 
         /// <summary>
@@ -61,8 +66,11 @@ namespace SpoonsAdventure
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // Map Texture
             map = Content.Load<Map>("Maps\\Map01"); // Test Map
+
+            // 3D Renderer
+            _rend.LoadContent(Content);
         }
 
         /// <summary>
@@ -89,7 +97,17 @@ namespace SpoonsAdventure
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            // TODO: Add your update logic here
+            // Testing Model
+            _rend.Controller(Keyboard.GetState());
+
+            // Testing Map
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                viewport.X += 10;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                viewport.X -= 10;
+
+            // Update Logic
             map.Update(gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);
@@ -103,8 +121,9 @@ namespace SpoonsAdventure
         {
             GraphicsDevice.Clear(Color.White);
 
-            // TODO: Add your drawing code here
             map.Draw(mapDisplayDevice, viewport);
+
+            _rend.Draw();
 
             _spriteBatch.Begin();
 
