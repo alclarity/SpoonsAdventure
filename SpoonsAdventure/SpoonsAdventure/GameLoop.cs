@@ -9,18 +9,26 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using xTile;
+using xTile.Dimensions;
+using xTile.Display;
+
 namespace SpoonsAdventure
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class GameLoop : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
         GameManager _gm;
 
-        public Game1()
+        Map map;
+        IDisplayDevice mapDisplayDevice;
+        xTile.Dimensions.Rectangle viewport;
+
+        public GameLoop()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -34,8 +42,10 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             _gm = new GameManager();
+            mapDisplayDevice = new XnaDisplayDevice(this.Content, this.GraphicsDevice);
+            map.LoadTileSheets(mapDisplayDevice);
+            viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
             base.Initialize();
         }
 
