@@ -42,11 +42,14 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
+            // This method calls LoadContents
+            base.Initialize();
+
             _gm = new GameManager();
             mapDisplayDevice = new XnaDisplayDevice(this.Content, this.GraphicsDevice);
             map.LoadTileSheets(mapDisplayDevice);
             viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
-            base.Initialize();
+            
         }
 
         /// <summary>
@@ -59,6 +62,7 @@ namespace SpoonsAdventure
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            map = Content.Load<Map>("Maps\\Map01"); // Test Map
         }
 
         /// <summary>
@@ -77,11 +81,16 @@ namespace SpoonsAdventure
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
+            // Xbox Controls
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            // Windows Controls
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                this.Exit();
+
             // TODO: Add your update logic here
+            map.Update(gameTime.ElapsedGameTime.Milliseconds);
 
             base.Update(gameTime);
         }
@@ -92,9 +101,14 @@ namespace SpoonsAdventure
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
+            map.Draw(mapDisplayDevice, viewport);
+
+            _spriteBatch.Begin();
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
