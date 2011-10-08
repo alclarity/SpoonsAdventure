@@ -73,7 +73,9 @@
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
@@ -147,6 +149,9 @@
     </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="xTile">
+      <HintPath>..\..\3rdParty\Xbox360\xTile.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
