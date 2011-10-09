@@ -53,6 +53,9 @@ namespace SpoonsAdventure
                 {
                     Tile tile = tiles[col, row];
 
+                    if (tile == null)
+                        continue;
+
                     // Calculate origin-based position
                     Vector2 oPos = new Vector2(col, row);
                     oPos.X = oPos.X * tileSize.X;

@@ -79,7 +79,7 @@ namespace SpoonsAdventure
                     effect.EnableDefaultLighting();
                     float xPos = _spoon._body.Position.X;
                     float yPos = _spoon._body.Position.Y;
-                    effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateScale(_spoon._scale)  * Matrix.CreateRotationY(_spoon._rotAboutY) * Matrix.CreateTranslation(xPos, yPos, 0f);
+                    effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateScale(_spoon._scale) * Matrix.CreateRotationY(_spoon._rotAboutY) * Matrix.CreateTranslation(xPos, yPos, 0f);
                     effect.View = Matrix.CreateLookAt(_CameraPosition, Vector3.Zero, Vector3.Up);
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(90f), _aspectRatio, 1f, 10000f);
                 }
