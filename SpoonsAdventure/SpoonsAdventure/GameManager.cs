@@ -19,12 +19,12 @@ namespace SpoonsAdventure
 
         public GameManager() { }
 
-        public void Init()
+        public void Init(ContentManager Content, GraphicsDeviceManager gdm)
         {
             map = new Map();
 
             // Map
-            mapDisplayDevice = new XnaDisplayDevice(this.Content, this.GraphicsDevice);
+            mapDisplayDevice = new XnaDisplayDevice(Content, gdm.GraphicsDevice);
             map.LoadTileSheets(mapDisplayDevice);
             viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
         }

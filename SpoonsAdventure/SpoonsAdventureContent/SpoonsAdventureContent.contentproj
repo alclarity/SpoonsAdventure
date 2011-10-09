@@ -45,13 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\Level1.tide">
-      <Name>Level1</Name>
-      <Importer>TideImporter</Importer>
-      <Processor>TideProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Maps\Map01.tide">
       <Name>Map01</Name>
       <Importer>TideImporter</Importer>
