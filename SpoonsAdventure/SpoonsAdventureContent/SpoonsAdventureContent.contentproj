@@ -42,14 +42,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\Level1.tide">
-      <Name>Level1</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <SubType>Designer</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Box.fbx">
       <Name>Box</Name>
       <Importer>FbxImporter</Importer>
@@ -76,6 +68,12 @@
       <Project>{FF068C72-5267-4EA7-9AE0-577B28D72BAF}</Project>
       <Name>MapPipeline</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Maps\Map01.tide">
+      <Name>Map01</Name>
+      <Importer>MapImporter</Importer>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
