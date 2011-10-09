@@ -20,20 +20,20 @@ namespace SpoonsAdventure
 
         Vector3 cameraPosition = new Vector3(0f, 0f, 100f);
 
-        public Renderer(GraphicsDeviceManager graphics)
+        public Renderer(GraphicsDeviceManager gdm)
         {
             modelPosition  = Vector3.Zero;
             modelRotationX = 0.0f;
             modelRotationY = MathHelper.PiOver2;
             cameraPosition = new Vector3(0f, 0f, 100f);
 
-            aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+            aspectRatio = gdm.GraphicsDevice.Viewport.AspectRatio;
         }
 
-        public void LoadContent(ContentManager Content)
+        public void LoadContent(ContentManager cm)
         {
-            modelSpoon = Content.Load<Model>("Models/Spoon");
-            modelBox   = Content.Load<Model>("Models/Box");
+            modelSpoon = cm.Load<Model>("Models/Spoon");
+            modelBox   = cm.Load<Model>("Models/Box");
         }
 
         public void Draw()

@@ -9,10 +9,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-using xTile;
-using xTile.Dimensions;
-using xTile.Display;
-
 namespace SpoonsAdventure
 {
     /// <summary>
@@ -20,18 +16,14 @@ namespace SpoonsAdventure
     /// </summary>
     public class GameLoop : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        GraphicsDeviceManager _gdm;
+        SpriteBatch _sb;
         GameManager _gm;
         Renderer _rend;
 
-        Map map;
-        IDisplayDevice mapDisplayDevice;
-        xTile.Dimensions.Rectangle viewport;
-
         public GameLoop()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            _gdm = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
@@ -43,18 +35,12 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
-            // 3D Renderer
-            _rend = new Renderer(_graphics);
+            _rend = new Renderer(_gdm);
             _gm   = new GameManager();
-            map   = new Map();
+            _gm.Init();
 
             // This method calls LoadContents
             base.Initialize();
-
-            // Map
-            mapDisplayDevice = new XnaDisplayDevice(this.Content, this.GraphicsDevice);
-            map.LoadTileSheets(mapDisplayDevice);
-            viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
         }
 
         /// <summary>
@@ -64,10 +50,10 @@ namespace SpoonsAdventure
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _sb = new SpriteBatch(GraphicsDevice);
 
             // Map Texture
-            map = Content.Load<Map>("Maps\\Map01"); // Test Map
+            _gm.Load(Content);
 
             // 3D Renderer
             _rend.LoadContent(Content);
@@ -100,15 +86,7 @@ namespace SpoonsAdventure
             // Testing Model
             _rend.Controller(Keyboard.GetState());
 
-            // Testing Map
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-                viewport.X += 10;
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-                viewport.X -= 10;
-
-            // Update Logic
-            map.Update(gameTime.ElapsedGameTime.Milliseconds);
+            _gm.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -121,13 +99,14 @@ namespace SpoonsAdventure
         {
             GraphicsDevice.Clear(Color.White);
 
-            map.Draw(mapDisplayDevice, viewport);
+            // This needs to get split up ...
+            //map.Draw(mapDisplayDevice, viewport);
 
             _rend.Draw();
 
-            _spriteBatch.Begin();
+            _sb.Begin();
 
-            _spriteBatch.End();
+            _sb.End();
 
             base.Draw(gameTime);
         }
