@@ -108,6 +108,9 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="xTile">
+      <HintPath>..\..\3rdParty\x86\xTile.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameManager.cs" />
@@ -121,10 +124,6 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MapPipeline\MapPipeline.csproj">
-      <Project>{FF068C72-5267-4EA7-9AE0-577B28D72BAF}</Project>
-      <Name>MapPipeline</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SpoonsAdventureContent\SpoonsAdventureContent.contentproj">
       <Name>SpoonsAdventureContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

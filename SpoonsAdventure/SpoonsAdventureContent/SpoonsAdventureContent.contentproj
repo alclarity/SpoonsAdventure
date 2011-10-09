@@ -44,8 +44,8 @@
   <ItemGroup>
     <Compile Include="Maps\Level1.tide">
       <Name>Level1</Name>
-      <Importer>MapImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
+      <Importer>TideImporter</Importer>
+      <Processor>TideProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
@@ -72,9 +72,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MapPipeline\MapPipeline.csproj">
-      <Project>{FF068C72-5267-4EA7-9AE0-577B28D72BAF}</Project>
-      <Name>MapPipeline</Name>
+    <ProjectReference Include="..\xTilePipeline\xTilePipeline.csproj">
+      <Project>{5BAD950D-BC43-4264-83AE-78A9FCBDA27F}</Project>
+      <Name>xTilePipeline</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
