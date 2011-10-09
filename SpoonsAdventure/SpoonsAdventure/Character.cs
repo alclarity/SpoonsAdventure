@@ -28,8 +28,8 @@ namespace SpoonsAdventure
             _body.Position = cPos;
             _body.Awake = true;
 
-            _scale = 1f;
-            _rotAboutY = 0f;
+            _scale = 5f;
+            _rotAboutY = (float)MathHelper.PiOver2;
         }
     }
 }
