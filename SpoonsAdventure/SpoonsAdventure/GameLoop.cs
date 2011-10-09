@@ -40,6 +40,10 @@ namespace SpoonsAdventure
             _rend.Init();
             _gm.Init();
 
+            _gdm.PreferredBackBufferHeight = 800;
+            _gdm.PreferredBackBufferWidth  = 1000;
+            _gdm.ApplyChanges();
+
             // This method calls LoadContents
             base.Initialize();
         }
@@ -126,6 +130,12 @@ namespace SpoonsAdventure
             GraphicsDevice.Clear(Color.White);
 
             _rend.Draw();
+
+            _sb.Begin();
+
+            _rend.Draw(_sb);
+
+            _sb.End();
 
             base.Draw(gameTime);
         }

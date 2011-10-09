@@ -14,6 +14,7 @@ namespace SpoonsAdventure
         public Model _model;
         public float _scale; // Object scaling factor
         public float _rotAboutY;
+        public Vector2 _center;
         public Vector2 _position; // Render origin-based pos
 
         public Character(World world, Vector2 size, Vector2 pos)
@@ -30,6 +31,8 @@ namespace SpoonsAdventure
 
             _scale = 5f;
             _rotAboutY = (float)MathHelper.PiOver2;
+
+            _center = new Vector2(16, 16);
         }
     }
 }
