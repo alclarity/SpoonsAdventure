@@ -38,7 +38,7 @@ namespace SpoonsAdventure
         {
             _rend = new Renderer(_gdm);
             _gm   = new GameManager();
-            _gm.Init();
+            _gm.Init(Content, _gdm);
             _phys.Init();
 
             // This method calls LoadContents

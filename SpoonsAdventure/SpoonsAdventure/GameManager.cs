@@ -19,7 +19,7 @@ namespace SpoonsAdventure
 
         public GameManager() { }
 
-        public void Init()
+        public void Init(ContentManager Content, GraphicsDeviceManager gdm)
         {
             _map = new Map();
         }
