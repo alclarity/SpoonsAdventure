@@ -8,21 +8,24 @@ using Microsoft.Xna.Framework;
 
 using FarseerPhysics.Dynamics;
 
+using xTile;
+
 namespace SpoonsAdventure
 {
     class GameManager
     {
+        Map _Map;
 
         public GameManager() { }
 
         public void Init(ContentManager Content, GraphicsDeviceManager gdm)
         {
-            //map = new Map();
+            _Map = new Map();
         }
 
         public void Load(ContentManager cm)
         {
-            //map = cm.Load<Map>("Maps\\Level1"); // Test Map
+            _Map = cm.Load<Map>("Maps\\Level1"); // Test Map
         }
 
         public void Update(GameTime gameTime)
