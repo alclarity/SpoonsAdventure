@@ -5,6 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using xTile.Display;
+using xTile.Dimensions;
+using xTile;
 
 namespace SpoonsAdventure
 {
@@ -19,7 +22,12 @@ namespace SpoonsAdventure
 
         Vector3 cameraPosition = new Vector3(0f, 0f, 100f);
 
-        public Renderer(GraphicsDeviceManager gdm)
+        // Map Viewer
+        Map _Map;
+        IDisplayDevice mapDisplayDevice;
+        xTile.Dimensions.Rectangle viewport;
+
+        public Renderer(ContentManager cm, GraphicsDeviceManager gdm)
         {
             _ModelPosition  = Vector3.Zero;
             _ModelRotationX = 0.0f;
@@ -27,6 +35,13 @@ namespace SpoonsAdventure
             cameraPosition = new Vector3(0f, 0f, 100f);
 
             _AspectRatio = gdm.GraphicsDevice.Viewport.AspectRatio;
+
+            // 2D
+            _Map = cm.Load<Map>("Maps\\Level1"); // Test Map
+
+            mapDisplayDevice = new XnaDisplayDevice(cm, gdm.GraphicsDevice);
+            viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
+            _Map.LoadTileSheets(mapDisplayDevice);
         }
 
         public void LoadContent(ContentManager cm)
@@ -37,6 +52,10 @@ namespace SpoonsAdventure
         
         public void Draw()
         {
+            // 2D
+            _Map.Draw(mapDisplayDevice, viewport);
+
+            // 3D
             Render(_ModelSpoon);
             //Render(modelBox);
         }

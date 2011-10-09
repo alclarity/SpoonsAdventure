@@ -35,9 +35,9 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
-            _rend = new Renderer(_gdm);
+            _rend = new Renderer(Content, _gdm);
             _gm   = new GameManager();
-            _gm.Init(Content, _gdm);
+            _gm.Init();
 
             // This method calls LoadContents
             base.Initialize();
@@ -53,7 +53,7 @@ namespace SpoonsAdventure
             _sb = new SpriteBatch(GraphicsDevice);
 
             // Map Texture
-            _gm.Load(Content);
+            _gm.Load(Content, _gdm);
 
             // 3D Renderer
             _rend.LoadContent(Content);
