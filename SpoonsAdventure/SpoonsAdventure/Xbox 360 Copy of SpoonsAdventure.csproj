@@ -64,6 +64,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
     <Compile Include="GameLoop.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="MapTile.cs" />

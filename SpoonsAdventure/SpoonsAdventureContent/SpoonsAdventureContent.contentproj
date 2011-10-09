@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Maps\Map01.tide">
       <SubType>Designer</SubType>
-      <Name>Map01</Name>
+      <Name>Level1</Name>
       <Importer>TideImporter</Importer>
       <Processor>TideProcessor</Processor>
     </Compile>

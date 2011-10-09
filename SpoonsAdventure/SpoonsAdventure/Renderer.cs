@@ -20,28 +20,27 @@ namespace SpoonsAdventure
         public float _ModelRotationX;
         public float _ModelRotationY;
 
-        Vector3 cameraPosition = new Vector3(0f, 0f, 100f);
+        Vector3 _CameraPosition = new Vector3(0f, 0f, 100f);
 
         // Map Viewer
         Map _Map;
-        IDisplayDevice mapDisplayDevice;
-        xTile.Dimensions.Rectangle viewport;
+        IDisplayDevice _MapDisplayDevice;
+        xTile.Dimensions.Rectangle _Viewport;
 
         public Renderer(ContentManager cm, GraphicsDeviceManager gdm)
         {
+            // 2D
+            _Map = cm.Load<Map>("Maps\\Level1"); // Test Map
+            _MapDisplayDevice = new XnaDisplayDevice(cm, gdm.GraphicsDevice);
+            _Viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
+            _Map.LoadTileSheets(_MapDisplayDevice);
+
+            // 3D
             _ModelPosition  = Vector3.Zero;
             _ModelRotationX = 0.0f;
             _ModelRotationY = MathHelper.PiOver2;
-            cameraPosition = new Vector3(0f, 0f, 100f);
-
-            _AspectRatio = gdm.GraphicsDevice.Viewport.AspectRatio;
-
-            // 2D
-            _Map = cm.Load<Map>("Maps\\Level1"); // Test Map
-
-            mapDisplayDevice = new XnaDisplayDevice(cm, gdm.GraphicsDevice);
-            viewport = new xTile.Dimensions.Rectangle(new Size(800, 600));
-            _Map.LoadTileSheets(mapDisplayDevice);
+            _CameraPosition = new Vector3(0f, 0f, 100f);
+            _AspectRatio    = gdm.GraphicsDevice.Viewport.AspectRatio;
         }
 
         public void LoadContent(ContentManager cm)
@@ -53,11 +52,16 @@ namespace SpoonsAdventure
         public void Draw()
         {
             // 2D
-            _Map.Draw(mapDisplayDevice, viewport);
+            _Map.Draw(_MapDisplayDevice, _Viewport);
 
             // 3D
             Render(_ModelSpoon);
             //Render(modelBox);
+        }
+
+        public void Update(Character character)
+        {
+
         }
 
         private void Render(Model model)
@@ -71,7 +75,7 @@ namespace SpoonsAdventure
                 {
                     effect.EnableDefaultLighting();
                     effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateRotationX(_ModelRotationX) * Matrix.CreateRotationY(_ModelRotationY) * Matrix.CreateTranslation(_ModelPosition);
-                    effect.View = Matrix.CreateLookAt(cameraPosition, Vector3.Zero, Vector3.Up);
+                    effect.View = Matrix.CreateLookAt(_CameraPosition, Vector3.Zero, Vector3.Up);
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(90f), _AspectRatio, 1f, 10000f);
                 }
 

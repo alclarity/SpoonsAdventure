@@ -19,7 +19,5 @@ namespace SpoonsAdventure
         {
             //_body = new 
         }
-
-
     }
 }

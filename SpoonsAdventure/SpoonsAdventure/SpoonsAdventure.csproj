@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="MapTile.cs" />
     <Compile Include="Physics.cs" />
