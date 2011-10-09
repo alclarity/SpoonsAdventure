@@ -43,16 +43,20 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+    <Compile Include="Maps\Map01.tide">
+      <Name>Map01</Name>
+      <Importer>TideImporter</Importer>
+      <Processor>TideProcessor</Processor>
 =======
     <Compile Include="Maps\Level1.tide">
       <Name>Level1</Name>
-      <Importer>TideImporter</Importer>
-      <Processor>TideProcessor</Processor>
+      <Importer>MapImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
       <SubType>Designer</SubType>
+>>>>>>> aeab4eb35d6b9233c956e20afda882558d45f07e
     </Compile>
   </ItemGroup>
   <ItemGroup>
->>>>>>> dc8108aee273c4c34e68bf7c9a14270127d7e5e3
     <Compile Include="Models\Box.fbx">
       <Name>Box</Name>
       <Importer>FbxImporter</Importer>
@@ -75,16 +79,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\xTilePipeline\xTilePipeline.csproj">
-      <Project>{5BAD950D-BC43-4264-83AE-78A9FCBDA27F}</Project>
-      <Name>xTilePipeline</Name>
+    <ProjectReference Include="..\..\MapPipeline\MapPipeline.csproj">
+      <Project>{FF068C72-5267-4EA7-9AE0-577B28D72BAF}</Project>
+      <Name>MapPipeline</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Maps\Map01.tide">
-      <Name>Map01</Name>
-      <Importer>MapImporter</Importer>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

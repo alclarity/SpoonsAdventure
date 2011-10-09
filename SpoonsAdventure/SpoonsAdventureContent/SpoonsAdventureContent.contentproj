@@ -43,13 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Maps\Map01.tide">
-      <Name>Level1</Name>
+      <SubType>Designer</SubType>
+      <Name>Map01</Name>
       <Importer>TideImporter</Importer>
       <Processor>TideProcessor</Processor>
-      <SubType>Designer</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\Box.fbx">
       <Name>Box</Name>
       <Importer>FbxImporter</Importer>
