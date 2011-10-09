@@ -58,6 +58,10 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MapPipeline\MapPipeline.csproj">
+      <Project>{FF068C72-5267-4EA7-9AE0-577B28D72BAF}</Project>
+      <Name>MapPipeline</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpoonsAdventureContent\SpoonsAdventureContent.contentproj">
       <Name>SpoonsAdventureContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
@@ -68,6 +72,7 @@
     <Compile Include="GameManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Renderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
@@ -149,9 +154,6 @@
     </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="xTile">
-      <HintPath>..\..\3rdParty\Xbox360\xTile.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

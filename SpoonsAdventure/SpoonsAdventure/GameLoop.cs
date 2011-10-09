@@ -84,11 +84,59 @@ namespace SpoonsAdventure
                 this.Exit();
 
             // Testing Model
-            _rend.Controller(Keyboard.GetState());
+            Controller(Keyboard.GetState());
 
             _gm.Update(gameTime);
 
             base.Update(gameTime);
+        }
+
+        // Just playing with the model for now
+        public void Controller(KeyboardState key)
+        {
+            if (key.IsKeyDown(Keys.W))
+            {
+                _rend._ModelPosition.Y += 5f;
+            }
+            else if (key.IsKeyDown(Keys.S))
+            {
+                _rend._ModelPosition.Y -= 5f;
+            }
+
+            if (key.IsKeyDown(Keys.A))
+            {
+                _rend._ModelPosition.X -= 0.1f;
+            }
+            else if (key.IsKeyDown(Keys.D))
+            {
+                _rend._ModelPosition.X += 0.1f;
+            }
+
+            if (key.IsKeyDown(Keys.Z))
+            {
+                _rend._ModelPosition.Z -= 5f;
+            }
+            else if (key.IsKeyDown(Keys.X))
+            {
+                _rend._ModelPosition.Z += 5f;
+            }
+
+            if (key.IsKeyDown(Keys.Up))
+            {
+                _rend._ModelRotationX += 0.1f;
+            }
+            if (key.IsKeyDown(Keys.Down))
+            {
+                _rend._ModelRotationX -= 0.1f;
+            }
+            if (key.IsKeyDown(Keys.Left))
+            {
+                _rend._ModelRotationY -= 0.1f;
+            }
+            if (key.IsKeyDown(Keys.Right))
+            {
+                _rend._ModelRotationY += 0.1f;
+            }
         }
 
         /// <summary>
