@@ -20,7 +20,6 @@ namespace SpoonsAdventure
         SpriteBatch _sb;
         GameManager _gm;
         Renderer _rend;
-        Physics _phys;
 
         public GameLoop()
         {
@@ -36,11 +35,10 @@ namespace SpoonsAdventure
         /// </summary>
         protected override void Initialize()
         {
-            _rend = new Renderer(Content, _gdm);
+            _rend = new Renderer();
             _gm   = new GameManager();
-            _phys = new Physics();
+            _rend.Init();
             _gm.Init();
-            _phys.Init();
 
             // This method calls LoadContents
             base.Initialize();
@@ -55,12 +53,8 @@ namespace SpoonsAdventure
             // Create a new SpriteBatch, which can be used to draw textures.
             _sb = new SpriteBatch(GraphicsDevice);
 
-            // Map Texture
-            _gm.Load(Content, _gdm.GraphicsDevice);
-            _phys.Load(_gm._tiles);
-
-            // 3D Renderer
-            _rend.LoadContent(Content);
+            _gm.Load(Content);
+            _rend.LoadContent(Content, _gdm.GraphicsDevice, _gm._map);
         }
 
         /// <summary>
@@ -101,21 +95,21 @@ namespace SpoonsAdventure
             // Jump and Crouch
             if (key.IsKeyDown(Keys.Up))
             {
-                _rend._ModelPosition.Y += 5f;
+                _rend._modelPosition.Y += 5f;
             }
             if (key.IsKeyDown(Keys.Down))
             {
-                _rend._ModelPosition.Y -= 5f;
+                _rend._modelPosition.Y -= 5f;
             }  
 
             // Left and Right Movement
             if (key.IsKeyDown(Keys.Left))
             {
-                _rend._ModelPosition.X -= 0.1f;
+                _rend._modelPosition.X -= 5f;
             }
             else if (key.IsKeyDown(Keys.Right))
             {
-                _rend._ModelPosition.X += 0.1f;
+                _rend._modelPosition.X += 5f;
             }
 
             //if (key.IsKeyDown(Keys.W))
@@ -163,10 +157,6 @@ namespace SpoonsAdventure
             GraphicsDevice.Clear(Color.White);
 
             _rend.Draw();
-
-            //_sb.Begin();
-
-            //_sb.End();
 
             base.Draw(gameTime);
         }

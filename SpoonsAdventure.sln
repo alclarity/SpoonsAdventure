@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpoonsAdventureContent", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xbox 360 Copy of SpoonsAdventure", "SpoonsAdventure\SpoonsAdventure\Xbox 360 Copy of SpoonsAdventure.csproj", "{FB7C7E31-392B-459E-8B25-14A9B6FF0CD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xTilePipeline", "SpoonsAdventure\xTilePipeline\xTilePipeline.csproj", "{5BAD950D-BC43-4264-83AE-78A9FCBDA27F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xTilePipeline", "3rdParty\xTilePipeline\xTilePipeline.csproj", "{5BAD950D-BC43-4264-83AE-78A9FCBDA27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

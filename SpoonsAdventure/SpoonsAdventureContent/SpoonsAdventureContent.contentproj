@@ -70,7 +70,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\xTilePipeline\xTilePipeline.csproj">
+    <ProjectReference Include="..\..\3rdParty\xTilePipeline\xTilePipeline.csproj">
       <Project>{5BAD950D-BC43-4264-83AE-78A9FCBDA27F}</Project>
       <Name>xTilePipeline</Name>
     </ProjectReference>

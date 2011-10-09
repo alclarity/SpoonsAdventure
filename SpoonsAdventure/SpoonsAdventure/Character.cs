@@ -7,14 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace SpoonsAdventure
 {
-    class Character
+    class Character : GameObject
     {
-        private Body _body;
-        private Vector2 _position;
+        private float _scale; // Object scaling factor
 
         public Character()
         {
-
+            _scale = 1f;
         }
     }
 }

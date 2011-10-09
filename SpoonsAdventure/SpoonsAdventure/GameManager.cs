@@ -10,70 +10,60 @@ using Microsoft.Xna.Framework.Input;
 using xTile;
 using xTile.Tiles;
 using xTile.Display;
+using FarseerPhysics.Dynamics;
 
 namespace SpoonsAdventure
 {
     class GameManager
     {
-        //Map _map;
-        public int _mapSizeX, _mapSizeY;
-        public MapTile[,] _tiles;
+        public Map _map;
         public Character _character;
+        public World _world;
+        List<MapTile> _tiles;
 
         public GameManager() { }
 
         public void Init()
         {
-            //_map = new Map();
+            _world = new World(Vector2.Zero); // 0 Gravity
+            _tiles = new List<MapTile>();
         }
 
-        public void Load(ContentManager cm, GraphicsDevice gd)
+        public void Load(ContentManager cm)
         {
-            // CreateMapObjects(cm);
+            _map = cm.Load<Map>("Maps\\Level1");
+
+            // Figure out map rows/cols
+            TileSheet ts = _map.GetTileSheet("Front");
+            Vector2 tileSize = new Vector2(ts.TileWidth, ts.TileHeight);
+
+            int mapSizeX = (int) (_map.DisplayWidth / tileSize.X);
+            int mapSizeY = (int) (_map.DisplayHeight / tileSize.Y);
+
+            TileArray tiles = _map.GetLayer("StaticCollidable").Tiles;
+
+            // Get all static objects
+            for (int row = 0; row < mapSizeY; ++row)
+            {
+                for (int col = 0; col < mapSizeX; ++col)
+                {
+                    Tile tile = tiles[col, row];
+
+                    // Calculate origin-based position
+                    Vector2 oPos = new Vector2(col, row);
+                    oPos.X = oPos.X * tileSize.X;
+                    oPos.Y = oPos.Y * tileSize.Y;
+
+                    // Create MapTile
+                    MapTile mTile = new MapTile(_world, tileSize, oPos);
+                    _tiles.Add(mTile);
+                }
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-            
-        }
-
-        // Create Bodies for the Tiles
-        private void CreateMapObjects(ContentManager cm)
-        {
-            Map _map = cm.Load<Map>("Maps\\Level1");
-
-            // Figure out map rows/cols
-            TileSheet ts = _map.GetTileSheet("Foreground"); // Returning Null
-            int sheetX = ts.SheetWidth / ts.TileWidth;
-            int sheetY = ts.SheetHeight / ts.TileHeight;
-
-            int tileX = ts.TileSize.Width;
-            int tileY = ts.TileSize.Height;
-
-            _mapSizeX = _map.DisplayWidth / tileX;
-            _mapSizeY = _map.DisplayHeight / tileY;
-            _tiles = new MapTile[_mapSizeX, _mapSizeY];
-
-            TileArray tiles = _map.GetLayer("Front").Tiles;
-
-            for (int row = 0; row < _mapSizeY; ++row)
-            {
-                for (int col = 0; col < _mapSizeX; ++col)
-                {
-                    Tile tile = tiles[col, row];
-
-                    if (tile.Properties.ContainsKey("collidable"))
-                    {
-                        // Get tile array pos
-                        Vector2 pos = new Vector2(col, row);
-                        // Convert to center-based world pos
-                        pos.X = pos.X * tileX + (tileX / 2);
-                        pos.Y = pos.Y * tileY + (tileY / 2);
-                        // Create MapTile
-                        _tiles[col, row] = new MapTile(pos);
-                    }
-                }
-            }
+            _world.Step(gameTime.ElapsedGameTime.Milliseconds * 0.001f);
         }
     }
 }
