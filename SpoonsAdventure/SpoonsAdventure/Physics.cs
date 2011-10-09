@@ -13,7 +13,7 @@ namespace SpoonsAdventure
 
         public void Init() { }
 
-        public void Load(MapTile[] tiles)
+        public void Load(MapTile[,] tiles)
         {
         }
 

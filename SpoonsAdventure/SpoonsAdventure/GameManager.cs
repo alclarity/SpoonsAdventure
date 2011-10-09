@@ -8,46 +8,61 @@ using Microsoft.Xna.Framework;
 
 using xTile;
 using xTile.Tiles;
+using Microsoft.Xna.Framework.Graphics;
+using xTile.Display;
 
 namespace SpoonsAdventure
 {
     class GameManager
     {
         Map _map;
-        public Vector2 _mapSize;
-        public MapTile[] _tiles;
+        public int _mapSizeX, _mapSizeY;
+        public MapTile[,] _tiles;
 
         public GameManager() { }
 
-        public void Init(ContentManager Content, GraphicsDeviceManager gdm)
+        public void Init()
         {
             _map = new Map();
         }
 
-        public void Load(ContentManager cm)
+        public void Load(ContentManager cm, GraphicsDevice gd)
         {
             _map = cm.Load<Map>("Maps\\Level1"); // Test Map
 
             // Figure out map rows/cols
             TileSheet ts = _map.GetTileSheet("Foreground");
-
-            Vector2 tileSize = new Vector2(ts.TileSize.Width, ts.TileSize.Height);
+            int sheetX = ts.SheetWidth / ts.TileWidth;
+            int sheetY = ts.SheetHeight / ts.TileHeight;
             
-            _mapSize = new Vector2();
-            _mapSize.X = _map.DisplayWidth / tileSize.X;
-            _mapSize.Y = _map.DisplayHeight / tileSize.Y;
+            
+            int tileX = ts.TileSize.Width;
+            int tileY = ts.TileSize.Height;
+
+            // This definitely doesn't belong here. lol
+            xTile.Display.IDisplayDevice idd = new XnaDisplayDevice(cm, gd);
+          
+            _mapSizeX = _map.DisplayWidth / tileX;
+            _mapSizeY = _map.DisplayHeight / tileY;
+            _tiles = new MapTile[_mapSizeX, _mapSizeY];
             
             TileArray tiles = _map.GetLayer("Front").Tiles;
 
-            for (int row = 0; row < _mapSize.Y; ++row)
+            for (int row = 0; row < _mapSizeY; ++row)
             {
-                for (int col = 0; col < _mapSize.X; ++col)
+                for (int col = 0; col < _mapSizeX; ++col)
                 {
-                    if (tiles[col, row].Properties.ContainsKey("collidable"))
+                    Tile tile = tiles[col, row];
+                    
+                    if (tile.Properties.ContainsKey("collidable"))
                     {
+                        // Get tile array pos
                         Vector2 pos = new Vector2(col, row);
-                        pos *= tileSize;
-
+                        // Convert to center-based world pos
+                        pos.X = pos.X * tileX + (tileX / 2);
+                        pos.X = pos.Y * tileY + (tileY / 2);
+                        // Create MapTile
+                        _tiles[col, row] = new MapTile(pos);
                     }
                 }
             }
