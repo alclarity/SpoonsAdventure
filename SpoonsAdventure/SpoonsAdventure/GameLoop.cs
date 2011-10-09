@@ -20,6 +20,7 @@ namespace SpoonsAdventure
         SpriteBatch _sb;
         GameManager _gm;
         Renderer _rend;
+        Physics _phys;
 
         public GameLoop()
         {
@@ -38,6 +39,7 @@ namespace SpoonsAdventure
             _rend = new Renderer(_gdm);
             _gm   = new GameManager();
             _gm.Init();
+            _phys.Init();
 
             // This method calls LoadContents
             base.Initialize();
@@ -54,6 +56,7 @@ namespace SpoonsAdventure
 
             // Map Texture
             _gm.Load(Content);
+            _phys.Load(_gm._tiles);
 
             // 3D Renderer
             _rend.LoadContent(Content);

@@ -76,30 +76,76 @@
         </Row>
         <Row>
           <TileSheet Ref="Foreground" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
+          <Static Index="1" BlendMode="Alpha">
+            <Properties>
+              <Property Key="collidable" Type="Boolean"><![CDATA[True]]></Property>
+            </Properties>
+          </Static>
           <Null Count="76" />
         </Row>
         <Row>
