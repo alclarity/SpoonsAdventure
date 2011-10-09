@@ -9,7 +9,6 @@ namespace SpoonsAdventure
 {
     class GameObject
     {
-        protected Body _body; // Contains center-based pos
-        protected Vector2 _position; // Render origin-based pos
+        public Body _body; // Contains center-based pos
     }
 }

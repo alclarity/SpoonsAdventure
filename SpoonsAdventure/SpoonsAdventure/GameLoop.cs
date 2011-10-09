@@ -54,7 +54,7 @@ namespace SpoonsAdventure
             _sb = new SpriteBatch(GraphicsDevice);
 
             _gm.Load(Content);
-            _rend.LoadContent(Content, _gdm.GraphicsDevice, _gm._map);
+            _rend.LoadContent(Content, _gdm.GraphicsDevice, _gm._map, _gm._spoon);
         }
 
         /// <summary>
@@ -92,60 +92,29 @@ namespace SpoonsAdventure
         // Just playing with the model for now
         public void Controller(KeyboardState key)
         {
+            Vector2 dir = Vector2.Zero;
+
             // Jump and Crouch
             if (key.IsKeyDown(Keys.Up))
             {
-                _rend._modelPosition.Y += 5f;
+                dir += new Vector2(0, 1);
             }
             if (key.IsKeyDown(Keys.Down))
             {
-                _rend._modelPosition.Y -= 5f;
+                dir += new Vector2(0, -1);
             }  
-
             // Left and Right Movement
             if (key.IsKeyDown(Keys.Left))
             {
-                _rend._modelPosition.X -= 5f;
+                dir += new Vector2(-1, 0);
             }
             else if (key.IsKeyDown(Keys.Right))
             {
-                _rend._modelPosition.X += 5f;
+                dir += new Vector2(1, 0);
             }
 
-            //if (key.IsKeyDown(Keys.W))
-            //{
-            //    _rend._ModelPosition.Y += 5f;
-            //}
-            //else if (key.IsKeyDown(Keys.S))
-            //{
-            //    _rend._ModelPosition.Y -= 5f;
-            //}
-
-            //if (key.IsKeyDown(Keys.Z))
-            //{
-            //    _rend._ModelPosition.Z -= 5f;
-            //}
-            //else if (key.IsKeyDown(Keys.X))
-            //{
-            //    _rend._ModelPosition.Z += 5f;
-            //}
-
-            //if (key.IsKeyDown(Keys.Up))
-            //{
-            //    _rend._ModelRotationX += 0.1f;
-            //}
-            //if (key.IsKeyDown(Keys.Down))
-            //{
-            //    _rend._ModelRotationX -= 0.1f;
-            //}
-            //if (key.IsKeyDown(Keys.Left))
-            //{
-            //    _rend._ModelRotationY -= 0.1f;
-            //}
-            //if (key.IsKeyDown(Keys.Right))
-            //{
-            //    _rend._ModelRotationY += 0.1f;
-            //}
+            if (dir != Vector2.Zero)
+                _gm.Move(dir);
         }
 
         /// <summary>

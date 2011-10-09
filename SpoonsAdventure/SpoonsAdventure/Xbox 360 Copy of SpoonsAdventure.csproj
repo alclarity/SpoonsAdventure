@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="Defs.cs" />
     <Compile Include="GameLoop.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
