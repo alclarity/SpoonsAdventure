@@ -29,7 +29,7 @@ namespace SpoonsAdventure
             _body.Position = cPos;
             _body.Awake = true;
 
-            _scale = 5f;
+            _scale = 1f;
             _rotAboutY = (float)MathHelper.PiOver2;
 
             _center = new Vector2(16, 16);

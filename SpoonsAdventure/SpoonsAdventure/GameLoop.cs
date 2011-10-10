@@ -40,7 +40,7 @@ namespace SpoonsAdventure
             _rend.Init();
             _gm.Init();
 
-            _gdm.PreferredBackBufferHeight = 800;
+            _gdm.PreferredBackBufferHeight = 768;
             _gdm.PreferredBackBufferWidth  = 1000;
             _gdm.ApplyChanges();
 
@@ -101,12 +101,14 @@ namespace SpoonsAdventure
             // Jump and Crouch
             if (key.IsKeyDown(Keys.Up))
             {
-                dir += new Vector2(0, 1);
+                _gm.Jump();
+                //dir += new Vector2(0, 1);
             }
             if (key.IsKeyDown(Keys.Down))
             {
-                dir += new Vector2(0, -1);
+                //dir += new Vector2(0, -1);
             }  
+
             // Left and Right Movement
             if (key.IsKeyDown(Keys.Left))
             {
@@ -128,8 +130,6 @@ namespace SpoonsAdventure
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.White);
-
-            _rend.Draw();
 
             _sb.Begin();
 

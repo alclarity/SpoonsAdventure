@@ -51,10 +51,10 @@ namespace SpoonsAdventure
             {
                 for (int col = 0; col < mapSizeX; ++col)
                 {
-                    Tile tile = tiles[col, row];
-
-                    if (tile == null)
+                    if (tiles[col, row] == null)
                         continue;
+
+                    Tile tile = tiles[col, row];
 
                     // Calculate origin-based position
                     Vector2 oPos = new Vector2(col, row);
@@ -68,15 +68,19 @@ namespace SpoonsAdventure
             }
         }
 
+        public void Jump()
+        {
+            _spoon._body.ApplyLinearImpulse(new Vector2(0, -1000f));
+        }
+
         public void Move(Vector2 dir)
         {
-            _spoon._body.ApplyForce(dir * 100f);
+            _spoon._body.ApplyForce(dir * 1000f);
         }
 
         public void Update(GameTime gameTime)
         {
             _world.Step(gameTime.ElapsedGameTime.Milliseconds * 0.001f);
-
         }
     }
 }

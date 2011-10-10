@@ -8,6 +8,6 @@ namespace SpoonsAdventure
     class Defs
     {
         public const float MtrInPix = 64f;
-        public const float Gravity = -9.8f;
+        public const float Gravity = 1000f;//9.8f;
     }
 }

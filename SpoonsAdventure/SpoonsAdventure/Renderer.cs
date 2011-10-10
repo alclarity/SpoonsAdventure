@@ -28,7 +28,7 @@ namespace SpoonsAdventure
         public Renderer()
         {
             // 2D
-            _viewport = new xTile.Dimensions.Rectangle(new Size(1000, 800));
+            _viewport = new xTile.Dimensions.Rectangle(new Size(1000, 768));
             
             // 3D
             _CameraPosition = new Vector3(0f, 0f, 100f);
@@ -53,20 +53,18 @@ namespace SpoonsAdventure
             texture = cm.Load<Texture2D>("Models/SpoonTexture");
         }
         
-        public void Draw()
+        public void Draw(SpriteBatch sb)
         {
             // 2D
             _map.Draw(_mapDisplayDevice, _viewport);
 
+            sb.Draw(texture, _spoon._body.Position, null, Color.White);
             // 3D
             Render();
         }
 
-        public void Draw(SpriteBatch sb)
-        {
-            sb.Draw(texture, _spoon._body.Position, null, Color.White, 0, _spoon._center, 1, SpriteEffects.None, 1);
-        }
-
+        // 0,0 in the world is center on the Camera
+        // Actual position and model position are not on the same scale
         private void Render()
         {
             Matrix[] transformation = new Matrix[_spoon._model.Bones.Count];
