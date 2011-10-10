@@ -52,6 +52,17 @@ namespace SpoonsAdventure
             // Test
             texture = cm.Load<Texture2D>("Models/SpoonTexture");
         }
+
+        public void Update()
+        {
+            //if(_spoon._body.Position.X < _viewport.X + _viewport.Width / 4)
+            //    _viewport.X--;
+
+            //if (_spoon._body.Position.X > _viewport.X + _viewport.Width * 3 / 4)
+            //    _viewport.X++;
+
+            //_viewport.X = (int)_spoon._body.Position.X;
+        }
         
         public void Draw(SpriteBatch sb)
         {
