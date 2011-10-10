@@ -40,8 +40,8 @@ namespace SpoonsAdventure
             _rend.Init();
             _gm.Init();
 
-            _gdm.PreferredBackBufferHeight = Defs.screenHeight;
-            _gdm.PreferredBackBufferWidth  = Defs.screenWidth;
+            _gdm.PreferredBackBufferHeight = Defs.ScreenHeight;
+            _gdm.PreferredBackBufferWidth  = Defs.ScreenWidth;
             _gdm.ApplyChanges();
 
             // This method calls LoadContents
@@ -99,6 +99,7 @@ namespace SpoonsAdventure
         public void Controller(KeyboardState key)
         {
             Vector2 dir = Vector2.Zero;
+            int rotation = 0;
 
             // Jump and Crouch
             if (key.IsKeyDown(Keys.Up))
@@ -114,14 +115,16 @@ namespace SpoonsAdventure
             if (key.IsKeyDown(Keys.Left))
             {
                 dir += new Vector2(-1, 0);
+                rotation = Defs.Left;
             }
             else if (key.IsKeyDown(Keys.Right))
             {
                 dir += new Vector2(1, 0);
+                rotation = Defs.Right;
             }
 
             if (dir != Vector2.Zero)
-                _gm.Move(dir);
+                _gm.Move(dir, rotation);
         }
 
         /// <summary>

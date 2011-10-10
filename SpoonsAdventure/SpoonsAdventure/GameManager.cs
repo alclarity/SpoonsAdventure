@@ -70,10 +70,26 @@ namespace SpoonsAdventure
             }
         }
 
-        public void Move(Vector2 dir)
+        public void Move(Vector2 dir, int rot)
         {
             dir.Y *= 10f;
             _spoon._body.ApplyLinearImpulse(dir * 1f);
+
+            if(rot != 0)
+            {
+                _spoon._rotAboutY %= (float)MathHelper.TwoPi;
+
+                if (rot == Defs.Left)
+                {
+                    if(_spoon._rotAboutY > -(float)MathHelper.PiOver2)
+                        _spoon._rotAboutY -= 0.1f;
+                }
+                else if (rot == Defs.Right)
+                {
+                    if (_spoon._rotAboutY < (float)MathHelper.PiOver2)
+                        _spoon._rotAboutY += 0.1f;
+                }
+            }
         }
 
         public void Update(GameTime gameTime)

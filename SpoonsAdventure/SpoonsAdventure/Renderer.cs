@@ -29,7 +29,7 @@ namespace SpoonsAdventure
         public Renderer()
         {
             // 2D
-            _viewport = new xTile.Dimensions.Rectangle(new Size(Defs.screenWidth, Defs.screenHeight));
+            _viewport = new xTile.Dimensions.Rectangle(new Size(Defs.ScreenWidth, Defs.ScreenHeight));
             
             // 3D
             _CameraPosition = new Vector3(0f, 0f, 100f);
@@ -53,7 +53,7 @@ namespace SpoonsAdventure
             // Test
             texture = cm.Load<Texture2D>("Models/SpoonTexture");
 
-            _viewport.X -= Defs.screenWidth / 2;
+            _viewport.X -= Defs.ScreenWidth / 2;
 
             _gd = gd;
         }
@@ -68,13 +68,13 @@ namespace SpoonsAdventure
 
             _CameraPosition.X = pos.X;
             _CameraPosition.Y = pos.Y;
-            _viewport.X = (int)pos.X -Defs.screenWidth / 2;
+            _viewport.X = (int)pos.X -Defs.ScreenWidth / 2;
 
             // 2D
             _map.Draw(_mapDisplayDevice, _viewport);
 
             //
-            Vector2 boxPosition = pos + _spoon._centerOff + new Vector2(Defs.screenWidth/2, 0);
+            Vector2 boxPosition = pos + _spoon._centerOff + new Vector2(Defs.ScreenWidth/2, 0);
 
             sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation, _spoon._centerOff, 1f, SpriteEffects.None, 0);
             
@@ -101,7 +101,7 @@ namespace SpoonsAdventure
                     effect.EnableDefaultLighting();
                     effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateScale(_spoon._scale) * Matrix.CreateRotationY(_spoon._rotAboutY) * Matrix.CreateRotationZ(-_spoon._body.Rotation) * Matrix.CreateTranslation(pos.X, pos.Y, 0f);
                     effect.View = Matrix.CreateLookAt(_CameraPosition, pos, Vector3.Up);
-                    effect.Projection = Matrix.CreateOrthographic(Defs.screenWidth, Defs.screenHeight, 1f, 100f);
+                    effect.Projection = Matrix.CreateOrthographic(Defs.ScreenWidth, Defs.ScreenHeight, 1f, 100f);
                 }
 
                 mesh.Draw();
