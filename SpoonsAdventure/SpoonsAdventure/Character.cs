@@ -17,6 +17,7 @@ namespace SpoonsAdventure
         public float _rotAboutY;
         public Vector2 _centerOff;
         public bool _isGrounded;
+        public bool _grounded;
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
@@ -29,6 +30,7 @@ namespace SpoonsAdventure
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos + _centerOff / Defs.MtrInPix;
             _body.FixedRotation = true;
+            _body.OnCollision += GroundCollision;
             
             // Jumping
             Vector2 jumpStart = new Vector2(_centerOff.X + 1, _centerOff.Y);
@@ -39,6 +41,14 @@ namespace SpoonsAdventure
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
+
+            _jumping = false;
+        }
+
+        bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+            _grounded = true;
+            return true;
         }
     }
 }

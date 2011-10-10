@@ -78,8 +78,11 @@ namespace SpoonsAdventure
 
         public void Jump()
         {
-            _spoon._isGrounded = true;
-            _spoon._body.ApplyForce(new Vector2(0, -2000f));
+            if (_spoon._grounded)
+            {
+                _spoon._jumping = true;
+                _spoon._body.ApplyForce(new Vector2(0, -10000f));
+            }
         }
 
         public void Move(Vector2 dir, int rot)
@@ -107,7 +110,11 @@ namespace SpoonsAdventure
         public void Update(GameTime gameTime)
         {
             _world.Step(gameTime.ElapsedGameTime.Milliseconds * 0.001f);
-            
+            if (_spoon._jumping)
+            {
+                _spoon._jumping = false;
+                _spoon._grounded = false;
+            }
         }
     }
 }
