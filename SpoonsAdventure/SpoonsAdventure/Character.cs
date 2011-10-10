@@ -27,7 +27,7 @@ namespace SpoonsAdventure
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos / Defs.MtrInPix;
 
-            _scale = 1f;
+            _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
         }
     }

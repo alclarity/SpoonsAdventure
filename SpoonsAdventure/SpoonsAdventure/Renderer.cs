@@ -31,7 +31,7 @@ namespace SpoonsAdventure
             _viewport = new xTile.Dimensions.Rectangle(new Size(Defs.screenWidth, Defs.screenHeight));
             
             // 3D
-            _CameraPosition = new Vector3(0f, 0f, 10f);
+            _CameraPosition = new Vector3(0f, 0f, 100f);
         }
 
         public void Init()
@@ -87,7 +87,7 @@ namespace SpoonsAdventure
                     effect.EnableDefaultLighting();
                     effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateScale(_spoon._scale) * Matrix.CreateRotationY(_spoon._rotAboutY) * Matrix.CreateRotationZ(-_spoon._body.Rotation) * Matrix.CreateTranslation(pos.X, pos.Y, 0f);
                     effect.View = Matrix.CreateLookAt(_CameraPosition, pos, Vector3.Up);
-                    effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(80f), _aspectRatio, 0.5f, 10f);
+                    effect.Projection = Matrix.CreateOrthographic(Defs.screenWidth, Defs.screenHeight, 1f, 100f);
                 }
 
                 mesh.Draw();
