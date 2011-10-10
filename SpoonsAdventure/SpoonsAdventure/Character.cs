@@ -27,9 +27,18 @@ namespace SpoonsAdventure
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos + _centerOff / Defs.MtrInPix;
             _body.FixedRotation = true;
+            _body.OnCollision += GroundCollision;
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
+        }
+
+        bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
+        {
+            // fixtureA: The fixture of 'Body'
+            // fixtureB: The fixture of the body that collided with 'Body'
+
+            return true;
         }
     }
 }
