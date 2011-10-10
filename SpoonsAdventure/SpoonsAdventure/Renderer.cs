@@ -58,7 +58,9 @@ namespace SpoonsAdventure
             // 2D
             _map.Draw(_mapDisplayDevice, _viewport);
 
-            sb.Draw(texture, _spoon._body.Position, null, Color.White);
+            //spriteBatch.Draw(tex, pos, null, Color.White, body.Rotation, origin, 1f, SpriteEffects.None, 0);
+            Vector2 pos = _spoon._body.Position * Defs.MtrInPix + new Vector2(16,16);
+            sb.Draw(texture, pos, null, Color.White, _spoon._body.Rotation, new Vector2(16,16), 1f, SpriteEffects.None, 0);
             // 3D
             Render();
         }

@@ -25,10 +25,10 @@ namespace SpoonsAdventure
 
         public void Init()
         {
-            _world = new World(new Vector2(0, Defs.Gravity)); // 0 Gravity
+            _world = new World(new Vector2(0, Defs.Gravity));
             _tiles = new List<MapTile>();
 
-            Vector2 spoonSize = new Vector2(32, 32) / Defs.MtrInPix;
+            Vector2 spoonSize = new Vector2(32, 32);
             Vector2 spoonPos = Vector2.Zero;
             _spoon = new Character(_world, spoonSize, spoonPos);
         }
@@ -68,19 +68,17 @@ namespace SpoonsAdventure
             }
         }
 
-        public void Jump()
-        {
-            //_spoon._body.ApplyLinearImpulse(new Vector2(0, -1000f));
-        }
-
         public void Move(Vector2 dir)
         {
-            _spoon._body.ApplyForce(dir * 10000f);
+            //_spoon._body.ApplyForce(dir * 100f);
+            dir.Y *= 10f;
+            _spoon._body.ApplyLinearImpulse(dir * 1f);
         }
 
         public void Update(GameTime gameTime)
         {
             _world.Step(gameTime.ElapsedGameTime.Milliseconds * 0.001f);
+            
         }
     }
 }
