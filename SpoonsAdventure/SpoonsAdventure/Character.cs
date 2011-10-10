@@ -6,6 +6,7 @@ using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Factories;
+using FarseerPhysics.Collision.Shapes;
 
 namespace SpoonsAdventure
 {
@@ -15,8 +16,9 @@ namespace SpoonsAdventure
         public float _scale; // Object scaling factor
         public float _rotAboutY;
         public Vector2 _centerOff;
-        public bool _jumping;
         public bool _grounded;
+        public bool _jumping;
+        public Fixture _jumpFixture;
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
@@ -29,12 +31,22 @@ namespace SpoonsAdventure
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos + _centerOff / Defs.MtrInPix;
             _body.FixedRotation = true;
-            _body.OnCollision += GroundCollision;
+            
+            // Jumping
+            Vector2 jumpStart = new Vector2(_centerOff.X + 1, _centerOff.Y - 50);
+            Vector2 jumpEnd = new Vector2(_centerOff.X - 1, _centerOff.Y - 50);
+            _jumpFixture = _body.CreateFixture(new EdgeShape(jumpStart, jumpEnd));
 
+            //_jumpFixture = FixtureFactory.AttachEdge(jumpStart, jumpEnd, _body);
+
+            _jumpFixture.OnCollision += GroundCollision;
+
+            _grounded = true;
+            _jumping = true;
+
+            // Matrix
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
-
-            _jumping = false;
         }
 
         bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
