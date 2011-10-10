@@ -88,24 +88,28 @@ namespace SpoonsAdventure
             _map.Draw(_mapDisplayDevice, _viewport);
 
             // Reposition the 3D Camera
-            _CameraPosition.X = pos.X;
-            _CameraPosition.Y = pos.Y;
+            _CameraPosition.X = _viewport.X;// +Defs.ScreenWidth / 2;
 
             // 3D
             _gd.BlendState = BlendState.Opaque;
-            Render(pos);
+            Render();
             _gd.BlendState = BlendState.AlphaBlend;
         }
 
         // Actual position and model position are not on the same scale
-        private void Render(Vector2 spoonPos)
+        private void Render()
         {
+            Vector2 sPos = _spoon._body.Position * Defs.MtrInPix;
+
             Vector3 pos = Vector3.Zero;
-            pos.X = spoonPos.X;
-            pos.Y = spoonPos.Y;
+            pos.X = sPos.X + 2 - Defs.ScreenWidth / 2 + _spoon._centerOff.X;
+            pos.Y = -sPos.Y + Defs.ScreenHeight / 2 - 48;
 
             Matrix[] transformation = new Matrix[_spoon._model.Bones.Count];
             _spoon._model.CopyAbsoluteBoneTransformsTo(transformation);
+
+            Vector3 lookAt = Vector3.Zero;
+            lookAt.X = _viewport.X;
 
             foreach (ModelMesh mesh in _spoon._model.Meshes)
             {
@@ -113,7 +117,7 @@ namespace SpoonsAdventure
                 {
                     effect.EnableDefaultLighting();
                     effect.World = transformation[mesh.ParentBone.Index] * Matrix.CreateScale(_spoon._scale) * Matrix.CreateRotationY(_spoon._rotAboutY) * Matrix.CreateRotationZ(-_spoon._body.Rotation) * Matrix.CreateTranslation(pos.X, pos.Y, 0f);
-                    effect.View = Matrix.CreateLookAt(_CameraPosition, pos, Vector3.Up);
+                    effect.View = Matrix.CreateLookAt(_CameraPosition, lookAt, Vector3.Up);
                     effect.Projection = Matrix.CreateOrthographic(Defs.ScreenWidth, Defs.ScreenHeight, 1f, 200f);
                 }
 
