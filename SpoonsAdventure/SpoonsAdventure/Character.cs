@@ -18,14 +18,14 @@ namespace SpoonsAdventure
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
+            _centerOff = size / 2f;
+
             size /= Defs.MtrInPix;
             pos /= Defs.MtrInPix;
 
-            _centerOff = size / 2f * Defs.MtrInPix;
-
             _body = BodyFactory.CreateRectangle(world, size.X, size.Y, 10f);
             _body.BodyType = BodyType.Dynamic;
-            _body.Position = pos / Defs.MtrInPix;
+            _body.Position = pos + _centerOff / Defs.MtrInPix;
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;

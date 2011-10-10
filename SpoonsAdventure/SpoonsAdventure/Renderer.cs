@@ -80,7 +80,7 @@ namespace SpoonsAdventure
                 boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2;
             }
             
-            sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation, _spoon._centerOff, 1f, SpriteEffects.None, 0);
+            sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation,_spoon._centerOff, 1f, SpriteEffects.None, 0);
 
             // 2D
             _map.Draw(_mapDisplayDevice, _viewport);
