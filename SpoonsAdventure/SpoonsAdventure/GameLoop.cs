@@ -101,12 +101,11 @@ namespace SpoonsAdventure
             // Jump and Crouch
             if (key.IsKeyDown(Keys.Up))
             {
-                _gm.Jump();
-                //dir += new Vector2(0, 1);
+                dir += new Vector2(0, -1);
             }
             if (key.IsKeyDown(Keys.Down))
             {
-                //dir += new Vector2(0, -1);
+                dir += new Vector2(0, 1);
             }  
 
             // Left and Right Movement

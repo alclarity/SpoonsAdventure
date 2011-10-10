@@ -70,12 +70,12 @@ namespace SpoonsAdventure
 
         public void Jump()
         {
-            _spoon._body.ApplyLinearImpulse(new Vector2(0, -1000f));
+            //_spoon._body.ApplyLinearImpulse(new Vector2(0, -1000f));
         }
 
         public void Move(Vector2 dir)
         {
-            _spoon._body.ApplyForce(dir * 1000f);
+            _spoon._body.ApplyForce(dir * 10000f);
         }
 
         public void Update(GameTime gameTime)
