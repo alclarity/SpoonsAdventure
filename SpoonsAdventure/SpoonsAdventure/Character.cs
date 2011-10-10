@@ -16,6 +16,7 @@ namespace SpoonsAdventure
         public float _rotAboutY;
         public Vector2 _centerOff;
         public bool _jumping;
+        public bool _grounded;
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
@@ -38,9 +39,7 @@ namespace SpoonsAdventure
 
         bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            // fixtureA: The fixture of 'Body'
-            // fixtureB: The fixture of the body that collided with 'Body'
-
+            _grounded = true;
             return true;
         }
     }
