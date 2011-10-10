@@ -57,10 +57,6 @@ namespace SpoonsAdventure
 
             _gd = gd;
         }
-
-        public void Update()
-        {
-        }
         
         public void Draw(SpriteBatch sb)
         {
@@ -69,15 +65,25 @@ namespace SpoonsAdventure
             // Reposition the 2D map
             _viewport.X = (int)(pos.X - Defs.ScreenWidth / 2);
 
-            // 2D
-            _map.Draw(_mapDisplayDevice, _viewport);
-
             // PLACEHOLDER SPOON
-            Vector2 boxPosition = pos + _spoon._centerOff + new Vector2(Defs.ScreenWidth / 2, 0);
-            boxPosition.Y = pos.Y + _spoon._centerOff.Y;
-            boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2;
+            Vector2 boxPosition = new Vector2();
+            
+            // Edge of Map
+            if (pos.X < Defs.ScreenWidth / 2)
+            {
+                _viewport.X = 0;
+                boxPosition = pos + _spoon._centerOff;
+            }
+            else
+            {
+                boxPosition.Y = pos.Y + _spoon._centerOff.Y;
+                boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2;
+            }
             
             sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation, _spoon._centerOff, 1f, SpriteEffects.None, 0);
+
+            // 2D
+            _map.Draw(_mapDisplayDevice, _viewport);
 
             // Reposition the 3D Camera
             _CameraPosition.X = pos.X;
