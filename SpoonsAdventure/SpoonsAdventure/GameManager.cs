@@ -78,7 +78,7 @@ namespace SpoonsAdventure
 
         public void Jump()
         {
-            _spoon._jumping = true;
+            _spoon._isGrounded = true;
             _spoon._body.ApplyForce(new Vector2(0, -2000f));
         }
 
