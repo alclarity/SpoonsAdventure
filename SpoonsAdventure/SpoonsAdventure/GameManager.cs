@@ -56,6 +56,8 @@ namespace SpoonsAdventure
 
                     Tile tile = tiles[col, row];
 
+                    
+
                     // Calculate origin-based position
                     Vector2 oPos = new Vector2(col, row);
                     oPos.X = oPos.X * tileSize.X;
@@ -70,7 +72,6 @@ namespace SpoonsAdventure
 
         public void Move(Vector2 dir)
         {
-            //_spoon._body.ApplyForce(dir * 100f);
             dir.Y *= 10f;
             _spoon._body.ApplyLinearImpulse(dir * 1f);
         }

@@ -135,7 +135,7 @@ namespace SpoonsAdventure
             _sb.Begin();
 
             _rend.Draw(_sb);
-
+            
             _sb.End();
 
             base.Draw(gameTime);
