@@ -40,8 +40,8 @@ namespace SpoonsAdventure
             _rend.Init();
             _gm.Init();
 
-            _gdm.PreferredBackBufferHeight = 768;
-            _gdm.PreferredBackBufferWidth  = 1000;
+            _gdm.PreferredBackBufferHeight = Defs.screenHeight;
+            _gdm.PreferredBackBufferWidth  = Defs.screenWidth;
             _gdm.ApplyChanges();
 
             // This method calls LoadContents
