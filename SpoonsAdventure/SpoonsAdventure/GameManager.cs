@@ -81,14 +81,13 @@ namespace SpoonsAdventure
             if (_spoon._grounded)
             {
                 _spoon._jumping = true;
-                _spoon._body.ApplyForce(new Vector2(0, -10000f));
+                _spoon._body.ApplyForce(new Vector2(0, -11000f));
             }
         }
 
         public void Move(Vector2 dir, int rot)
         {
-            dir.Y *= 10f;
-            _spoon._body.ApplyLinearImpulse(dir * 1f);
+            _spoon._body.ApplyLinearImpulse(dir * 1.2f);
 
             if(rot != 0)
             {

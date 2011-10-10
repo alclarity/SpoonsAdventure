@@ -39,7 +39,13 @@ namespace SpoonsAdventure
 
         bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
         {
-            _grounded = true;
+            FarseerPhysics.Collision.Manifold man = new FarseerPhysics.Collision.Manifold();
+            //get collision manifold
+            contact.GetManifold(out man);
+
+            if (man.LocalNormal.X == 0 && man.LocalNormal.Y == 1)
+                _grounded = true;
+
             return true;
         }
     }
