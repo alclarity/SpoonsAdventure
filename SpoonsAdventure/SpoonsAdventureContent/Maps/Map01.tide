@@ -1173,8 +1173,8 @@
           <Static Index="3" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
-          <Static Index="4" BlendMode="Alpha" />
-          <Static Index="1" BlendMode="Alpha" />
+          <Static Index="0" BlendMode="Alpha" />
+          <Static Index="0" BlendMode="Alpha" />
           <Static Index="1" BlendMode="Alpha" />
           <Static Index="5" BlendMode="Alpha" />
           <Static Index="112" BlendMode="Alpha" />
@@ -1302,7 +1302,7 @@
           <Static Index="3" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
-          <Static Index="2" BlendMode="Alpha" />
+          <Static Index="0" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
           <Static Index="0" BlendMode="Alpha" />
           <Static Index="3" BlendMode="Alpha" />
