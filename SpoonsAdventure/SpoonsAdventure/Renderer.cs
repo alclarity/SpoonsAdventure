@@ -66,18 +66,23 @@ namespace SpoonsAdventure
         {
             Vector2 pos = _spoon._body.Position * Defs.MtrInPix;
 
-            _CameraPosition.X = pos.X;
-            _CameraPosition.Y = pos.Y;
+            // Reposition the 2D map
+            _viewport.X = (int)(pos.X - Defs.ScreenWidth / 2);
 
             // 2D
             _map.Draw(_mapDisplayDevice, _viewport);
 
+            // PLACEHOLDER SPOON
             Vector2 boxPosition = pos + _spoon._centerOff + new Vector2(Defs.ScreenWidth / 2, 0);
-            boxPosition.X -= pos.X;
-            _viewport.X = (int)(pos.X - Defs.ScreenWidth / 2);
-
-            sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation, _spoon._centerOff, 1f, SpriteEffects.None, 0);
+            boxPosition.Y = pos.Y + _spoon._centerOff.Y;
+            boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2;
             
+            sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation, _spoon._centerOff, 1f, SpriteEffects.None, 0);
+
+            // Reposition the 3D Camera
+            _CameraPosition.X = pos.X;
+            _CameraPosition.Y = pos.Y;
+
             // 3D
             _gd.BlendState = BlendState.Opaque;
             Render(pos);
