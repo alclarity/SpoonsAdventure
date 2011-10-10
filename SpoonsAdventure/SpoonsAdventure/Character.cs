@@ -15,6 +15,7 @@ namespace SpoonsAdventure
         public float _scale; // Object scaling factor
         public float _rotAboutY;
         public Vector2 _centerOff;
+        public bool _jumping;
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
@@ -31,6 +32,8 @@ namespace SpoonsAdventure
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
+
+            _jumping = false;
         }
 
         bool GroundCollision(Fixture fixtureA, Fixture fixtureB, FarseerPhysics.Dynamics.Contacts.Contact contact)
