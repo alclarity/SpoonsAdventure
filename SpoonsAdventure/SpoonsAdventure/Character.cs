@@ -15,6 +15,7 @@ namespace SpoonsAdventure
         public float _scale; // Object scaling factor
         public float _rotAboutY;
         public Vector2 _centerOff;
+        public bool _jumping;
 
         public Character(World world, Vector2 size, Vector2 pos)
         {
@@ -26,9 +27,12 @@ namespace SpoonsAdventure
             _body = BodyFactory.CreateRectangle(world, size.X, size.Y, 10f);
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos + _centerOff / Defs.MtrInPix;
+            _body.FixedRotation = true;
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
+
+            _jumping = false;
         }
     }
 }
