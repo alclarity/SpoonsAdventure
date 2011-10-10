@@ -28,7 +28,7 @@ namespace SpoonsAdventure
             _world = new World(new Vector2(0, Defs.Gravity));
             _tiles = new List<MapTile>();
 
-            Vector2 spoonSize = new Vector2(32, 32);
+            Vector2 spoonSize = new Vector2(26, 64);
             Vector2 spoonPos = Vector2.Zero;
             _spoon = new Character(_world, spoonSize, spoonPos);
         }
@@ -55,8 +55,6 @@ namespace SpoonsAdventure
                         continue;
 
                     Tile tile = tiles[col, row];
-
-                    
 
                     // Calculate origin-based position
                     Vector2 oPos = new Vector2(col, row);
