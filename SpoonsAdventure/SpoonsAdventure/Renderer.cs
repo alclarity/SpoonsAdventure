@@ -73,11 +73,13 @@ namespace SpoonsAdventure
             {
                 _viewport.X = 0;
                 boxPosition = pos + _spoon._centerOff;
+                boxPosition.Y -= 16;
+                boxPosition.X += 3;
             }
             else
             {
-                boxPosition.Y = pos.Y + _spoon._centerOff.Y;
-                boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2;
+                boxPosition.Y = pos.Y + _spoon._centerOff.Y - 16;
+                boxPosition.X = _spoon._centerOff.X + Defs.ScreenWidth / 2 + 3;
             }
             
             sb.Draw(texture, boxPosition, null, Color.White, _spoon._body.Rotation,_spoon._centerOff, 1f, SpriteEffects.None, 0);
