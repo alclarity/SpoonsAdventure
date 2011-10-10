@@ -26,6 +26,7 @@ namespace SpoonsAdventure
             _body = BodyFactory.CreateRectangle(world, size.X, size.Y, 10f);
             _body.BodyType = BodyType.Dynamic;
             _body.Position = pos + _centerOff / Defs.MtrInPix;
+            _body.FixedRotation = true;
 
             _scale = 10f;
             _rotAboutY = (float)MathHelper.PiOver2;
