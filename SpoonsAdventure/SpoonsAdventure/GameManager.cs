@@ -11,6 +11,7 @@ using xTile;
 using xTile.Tiles;
 using xTile.Display;
 using FarseerPhysics.Dynamics;
+using FarseerPhysics.Factories;
 
 namespace SpoonsAdventure
 {
@@ -20,6 +21,7 @@ namespace SpoonsAdventure
         public Character _spoon;
         public World _world;
         List<MapTile> _tiles;
+        public Body _edge;
 
         public GameManager() { }
 
@@ -31,6 +33,12 @@ namespace SpoonsAdventure
             Vector2 spoonSize = new Vector2(32, 32);
             Vector2 spoonPos = Vector2.Zero;
             _spoon = new Character(_world, spoonSize, spoonPos);
+
+            // Edge to Block Start from falling off
+            Vector2 edgeStart = new Vector2(0, 0);
+            Vector2 edgeEnd   = new Vector2(0, Defs.ScreenHeight);
+
+            _edge = BodyFactory.CreateEdge(_world, edgeStart, edgeEnd);
         }
 
         public void Load(ContentManager cm)
@@ -55,8 +63,6 @@ namespace SpoonsAdventure
                         continue;
 
                     Tile tile = tiles[col, row];
-
-                    
 
                     // Calculate origin-based position
                     Vector2 oPos = new Vector2(col, row);

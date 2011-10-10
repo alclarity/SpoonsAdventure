@@ -90,8 +90,6 @@ namespace SpoonsAdventure
 
             _gm.Update(gameTime);
 
-            _rend.Update();
-
             base.Update(gameTime);
         }
 
